@@ -9,8 +9,7 @@ c-library mypigpio
 s" rpigpio" add-lib
 \c #include <sys/types.h>
 \c #include <unistd.h>
-\c #include "/home/pi/git/testgit/gforth_stuff/rpiGpio.h"
-\c #include "/home/pi/git/testgit/gforth_stuff/bcm2835_gpio.h"
+\c #include "/home/pi/git/Rpi_Gforth_GPIO/c_src/rpiGpio.h"
 \c int pipinoutput(int);
 \c int pipinlow(int);
 \c int pipinhigh(int);
