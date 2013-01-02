@@ -3,3 +3,13 @@ This is a Gforth library that gives low level access to Raspberry Pi GPIO Header
 The access is done in C via Wrapper functions that are writen in the Gforth library.
 The C code is included with a Makefile that creates a shared library. 
 The C code it self is mostly from Alanbarr/RaspberryPi-GPIO git repository.
+##################################################
+To use first you need to compile the c code and librarys and install like follows:
+	$cd c_src
+	$sudo make 
+	$sudo make install
+Now that you have the c shared library installed do the following
+	$cd ..
+	$sudo gforth
+	include rpi_GPIO_lib.fs		# note this line is entered in the gforth program and there is no prompt for this
+Now at this moment Gforth has words to do GPIO stuff.  See the code itself for some information oh how to use it!
