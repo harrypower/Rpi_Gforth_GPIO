@@ -26,12 +26,18 @@ s" rpigpio" add-lib
 \c int pipinoutput(int);
 \c int pipinlow(int);
 \c int pipinhigh(int);
+\c int pipinsetpullup(int pin) { return ( gpioSetPullResistor( pin, pullup ));}
+\c int pipinsetpulldown(int pin) { return ( gpioSetPullResistor( pin, pulldown));}
+\c int pipinsetpulldisable(int pin) { return ( gpioSetPullResistor( pin, pullDisable));} 
 \c int pipininput(int pin) { return ( gpioSetFunction ( pin, input )) ; }
 \c int pipinoutput(int pin) { return ( gpioSetFunction ( pin, output )) ; }
 \c int pipinlow(int pin) { return ( gpioSetPin ( pin, low )) ; }
 \c int pipinhigh(int pin) { return ( gpioSetPin ( pin, high )) ; }
+c-function pipinsetpullup pipinsetpullup n -- n
+c-function pipinsetpulldown pipinsetpulldown n -- n
+c-function pipinsetpulldisable pipinsetpulldisable n -- n
 c-function pipininput pipininput n -- n
-c-function pisetoutput pipinoutput n -- n 
+c-function pipinoutput pipinoutput n -- n 
 c-function piosetup gpioSetup -- n
 c-function piocleanup gpioCleanup -- n
 c-function pipinlow pipinlow n -- n
@@ -40,7 +46,7 @@ end-c-library
 
 \ basic output on gpio pin 25 example
 \ piosetup .	\ this should do basic setup of the gpio function and show errStatus value (0 for all ok)
-\ 25 pisetoutput .
+\ 25 pipinoutput .
 \ 25 pipinlow .
 \ 1000 ms
 \ 25 pipinhigh .
