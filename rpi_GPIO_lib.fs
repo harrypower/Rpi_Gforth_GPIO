@@ -1,12 +1,12 @@
 \ This gforth code is used as follows:
 \ include forth_lib_example.fs	\ this will load this file into gforth and compile and run it.
-\ Note the path in the below #include line may need to be changed for your repository location.
+
 
 c-library mypigpio
 s" rpigpio" add-lib
 \c #include <sys/types.h>
 \c #include <unistd.h>
-\c #include "/home/pi/git/Rpi_Gforth_GPIO/c_src/rpiGpio.h"	// **this path would need to be changed on a system
+\c #include "c_src/rpiGpio.h"
 \c int pipinoutput(int);
 \c int pipinlow(int);
 \c int pipinhigh(int);
