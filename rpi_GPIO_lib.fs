@@ -23,9 +23,6 @@ s" rpigpio" add-lib
 \c #include <sys/types.h>
 \c #include <unistd.h>
 \c #include "/home/pi/git/Rpi_Gforth_GPIO/c_src/rpiGpio.h"	\\ this path may need to be changed for your system
-\c int pipinoutput(int);
-\c int pipinlow(int);
-\c int pipinhigh(int);
 \c int pipinsetpullup(int pin) { return ( gpioSetPullResistor( pin, pullup ));}
 \c int pipinsetpulldown(int pin) { return ( gpioSetPullResistor( pin, pulldown));}
 \c int pipinsetpulldisable(int pin) { return ( gpioSetPullResistor( pin, pullDisable));} 
