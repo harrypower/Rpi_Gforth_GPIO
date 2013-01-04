@@ -18,10 +18,8 @@
 \ include forth_lib_example.fs	\ this will load this file into gforth and compile and run it.
 \ Note remember to ajust the path to the #include in below code if needed!
 
-c-library mypigpio
+c-library mygpio
 s" rpigpio" add-lib
-\c #include <sys/types.h>
-\c #include <unistd.h>
 \c #include "/home/pi/git/Rpi_Gforth_GPIO/c_src/rpiGpio.h"	\\ this path may need to be changed for your system
 \c int pipinsetpullup(int pin) { return ( gpioSetPullResistor( pin, pullup ));}
 \c int pipinsetpulldown(int pin) { return ( gpioSetPullResistor( pin, pulldown));}
@@ -30,6 +28,7 @@ s" rpigpio" add-lib
 \c int pipinoutput(int pin) { return ( gpioSetFunction ( pin, output )) ; }
 \c int pipinlow(int pin) { return ( gpioSetPin ( pin, low )) ; }
 \c int pipinhigh(int pin) { return ( gpioSetPin ( pin, high )) ; }
+c-function pipinread gpioReadPin n a -- n
 c-function pipinsetpullup pipinsetpullup n -- n
 c-function pipinsetpulldown pipinsetpulldown n -- n
 c-function pipinsetpulldisable pipinsetpulldisable n -- n
