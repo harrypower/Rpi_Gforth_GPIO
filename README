@@ -5,11 +5,28 @@ The C code is included with a Makefile that creates a shared library.
 The C code it self is mostly from Alanbarr/RaspberryPi-GPIO git repository.
 ##################################################
 To use first you need to compile the c code and librarys and install like follows:
-	$cd c_src
-	$sudo make 
-	$sudo make install
+	$ cd c_src
+	$ sudo make 
+	$ sudo make install
 Now that you have the c shared library installed do the following
-	$cd ..
-	$sudo gforth
+	$ cd ..
+	$ sudo gforth
 	include rpi_GPIO_lib.fs		# note this line is entered in the gforth program and there is no prompt for this
 Now at this moment Gforth has words to do GPIO stuff.  See the code itself for some information oh how to use it!
+##################################################
+If you change the code and need to test you will need to clear the gforth library stuff out.
+I have not figured out the proper and best way to do this but here is a way that works.  
+After the change then delete the library and recompile it and install it then run the gforth include command and it should work.
+Here are the commands:
+	$ cd c_src
+	$ sudo make uninstall
+	$ sudo make clean
+	$ cd ..
+	$ sudo gforth
+	include rpi_GPIO_lib.fs		# this will cause gforth to clean its librarys out.  Note you will get errors here but this is ok
+	$ cd c_src 
+	$ sudo make 
+	$ sudo make install
+	$ cd ..
+	$ sudo gforth
+	include rpi_GPIO_lib.fs		# this should be error free and you should be back in business
