@@ -16,7 +16,6 @@
 
 \ This gforth code is used as follows:
 \ include forth_lib_example.fs	\ this will load this file into gforth and compile and run it.
-\ Note remember to adjust the path to the #include in below code if needed!
 
 require rpi_GPIO_lib.fs
 
