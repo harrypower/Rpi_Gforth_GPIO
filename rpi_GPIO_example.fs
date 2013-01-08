@@ -34,7 +34,9 @@ else s" oops GPIO did not initalize!" type endif
 piosetup 0= if
 25 pipininput 0= if s" pin 25 now set for input" type cr endif
 25 pipinread 0= if s" pin 25 current input is low" type cr else s" pin 25 current input is high" type cr endif
+piocleanup 0= if s" GPIO is now turned off!" type cr endif
 else s" oops GPIO did not initalize!" type endif
 ;
 
-cr .( To use a simple output on pin 25 on adacobler use command:  simpleoutput)
+cr .( To use a simple output on pin 25 with an adacobler use command:  simpleoutput)
+cr .( To use a simple input on pin 25 with an adacobler use command: simpleinput)
