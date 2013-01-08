@@ -24,6 +24,7 @@ Here are the commands:
 	$ cd ..
 	$ sudo gforth
 	include rpi_GPIO_lib.fs		# this will cause gforth to clean its librarys out.  Note you will get errors here but this is ok
+	bye				# to exit gforth eviroment
 	$ cd c_src 
 	$ sudo make 
 	$ sudo make install

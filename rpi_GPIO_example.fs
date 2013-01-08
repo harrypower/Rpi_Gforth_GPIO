@@ -16,7 +16,7 @@
 
 \ This gforth code is used as follows:
 \ include forth_lib_example.fs	\ this will load this file into gforth and compile and run it.
-\ Note remember to ajust the path to the #include in below code if needed!
+\ Note remember to adjust the path to the #include in below code if needed!
 
 require rpi_GPIO_lib.fs
 
@@ -30,4 +30,11 @@ piocleanup 0= if s" Ok GPIO is now turned off!" type cr endif
 else s" oops GPIO did not initalize!" type endif 
 ;
 
-.( To use a simple output on pin 25 on adacobler use command:  simpleoutput)
+: simpleinput ( -- )
+piosetup 0= if
+25 pipininput 0= if s" pin 25 now set for input" type cr endif
+25 pipinread 0= if s" pin 25 current input is low" type cr else s" pin 25 current input is high" type cr endif
+else s" oops GPIO did not initalize!" type endif
+;
+
+cr .( To use a simple output on pin 25 on adacobler use command:  simpleoutput)

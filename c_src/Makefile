@@ -47,12 +47,16 @@ clean:
 	-rmdir $(LIB_DIR);
 
 install:
+	-cp rpiGpio.h /usr/include/rpiGpio.h
+	-cp bcm2835_gpio.h /usr/include/bcm2835_gpio.h
 	-cp $(LIB_DIR)/$(LIB_NAME_SHARED)$(LIB_VERSION)$(LIB_SUBVERSION) $(LIB_INSTALL)/$(LIB_NAME_SHARED)$(LIB_VERSION)$(LIB_SUBVERSION)
 	-ln -sf $(LIB_INSTALL)/$(LIB_NAME_SHARED)$(LIB_VERSION)$(LIB_SUBVERSION) $(LIB_INSTALL)/$(LIB_NAME_SHARED)
 	-ln -sf $(LIB_INSTALL)/$(LIB_NAME_SHARED)$(LIB_VERSION)$(LIB_SUBVERSION) $(LIB_INSTALL)/$(LIB_NAME_SHARED)$(LIB_VERSION)
 	-ldconfig -n $(LIB_INSTALL)/
 
 uninstall:
+	-rm /usr/include/rpiGpio.h
+	-rm /usr/include/bcm2835_gpio.h
 	-rm $(LIB_INSTALL)/$(LIB_NAME_SHARED)$(LIB_VERSION)$(LIB_SUBVERSION)
 	-rm $(LIB_INSTALL)/$(LIB_NAME_SHARED)
 	-rm $(LIB_INSTALL)/$(LIB_NAME_SHARED)$(LIB_VERSION)
