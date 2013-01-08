@@ -57,10 +57,12 @@ end-c-library
 \ 1000 ms
 \ 25 pipinhigh .
 \ piocleanup .	\ this should stop the gpio function and show errStatus value ( 0 for all ok)
+\ *******************************************************
 
-piosetup .
-25 pipininput .
-25 pipinread .
-here cell allot dup 25 swap pipinread2 . 1 dump
-piocleanup .
-
+\ basic input on gpio pin 25 example
+\ piosetup .
+\ 25 pipininput .
+\ 25 pipinread .
+\ here cell allot dup 25 swap pipinread2 . 1 dump
+\ piocleanup .
+\ ******************************************************
