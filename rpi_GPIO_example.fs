@@ -21,21 +21,36 @@ require rpi_GPIO_lib.fs
 
 : simpleoutput ( -- )
 piosetup 0= if 
-25 pipinoutput 0= if s" pin 25 set for output" type cr endif
-25 pipinlow 0= if s" pin 25 is low now" type cr endif
-1000 ms
-25 pipinhigh 0= if s" pin 25 is high now" type cr endif
-piocleanup 0= if s" Ok GPIO is now turned off!" type cr endif
+	25 pipinoutput 0= if s" pin 25 set for output" type cr endif
+	25 pipinlow 0= if s" pin 25 is low now" type cr endif
+	1000 ms
+	25 pipinhigh 0= if s" pin 25 is high now" type cr endif
+	piocleanup 0= if s" Ok GPIO is now turned off!" type cr endif
 else s" oops GPIO did not initalize!" type endif 
 ;
 
 : simpleinput ( -- )
 piosetup 0= if
-25 pipininput 0= if s" pin 25 now set for input" type cr endif
-25 pipinread 0= if s" pin 25 current input is low" type cr else s" pin 25 current input is high" type cr endif
-piocleanup 0= if s" GPIO is now turned off!" type cr endif
+	25 pipininput 0= if s" pin 25 now set for input" type cr endif
+	25 pad pipinread 0= if s" pin 25 was read ok" type cr else s" pin 25 failed to read for some reason!" type cr endif
+	pad c@ 0= if s" pin 25 current input is low" type cr else s" pin 25 current input is high" type cr endif
+	piocleanup 0= if s" GPIO is now turned off!" type cr endif
 else s" oops GPIO did not initalize!" type endif
 ;
 
+: output_timed { N_noop -- }
+N_noop 1000 > if 1000 to N_noop endif   \ N_noop is limited to 1000 arbitrarily
+piosetup 0= if
+	25 pipinoutput 0= if s" pin 25 set for output" type cr endif
+	BEGIN
+		25 pipinlow drop
+		N_noop 0 ?DO noop LOOP
+		25 pipinhigh drop
+	key? UNTIL	
+	piocleanup 0= if s" GPIO is now turned off!" type cr endif
+else s" oops GPIO did not initalize!" type cr endif
+;
+ 
 cr .( To use a simple output on pin 25 with an adacobler use command:  simpleoutput)
 cr .( To use a simple input on pin 25 with an adacobler use command: simpleinput)
+cr .( To use a variable time for low to high transition use command: 500 output_timed)

@@ -14,9 +14,9 @@ Now that you have the c shared library installed do the following
 	include rpi_GPIO_lib.fs		# note this line is entered in the gforth program and there is no prompt for this
 Now at this moment Gforth has words to do GPIO stuff.  See the code itself for some information oh how to use it!
 ##################################################
-If you change the code and need to test you will need to clear the gforth library stuff out.
+If you change any c code and need to test you will need to clear the gforth library stuff out and recompile the c library.
 I have not figured out the proper and best way to do this but here is a way that works.  
-After the change then delete the library and recompile it and install it then run the gforth include command and it should work.
+After the code change then delete the library and recompile it and install it then run the gforth include command and it should work.
 Here are the commands:
 	$ cd c_src
 	$ sudo make uninstall
@@ -31,3 +31,7 @@ Here are the commands:
 	$ cd ..
 	$ sudo gforth
 	include rpi_GPIO_lib.fs		# this should be error free and you should be back in business
+Sometimes for some reason this does not even work.  You will have noticed a path in the error message in Gforth. As an example the path may have looked like this /root/.gforth/libcc-named/.libs/mygpio.so.0 
+This path needs to be removed so do the following.
+	$ sudo rm -rf /root/.gforth	# note i do not include anything after the .gforth in this path example
+This simply removes the /root/.gforth directory and sub directroys and contents.  Now you need to follow the above first use compile instructions for the library and this should make it  work again!

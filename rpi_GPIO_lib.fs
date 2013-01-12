@@ -29,16 +29,8 @@ s" rpigpio" add-lib
 \c int pipinoutput(int pin) { return ( gpioSetFunction ( pin, output )) ; }
 \c int pipinlow(int pin) { return ( gpioSetPin ( pin, low )) ; }
 \c int pipinhigh(int pin) { return ( gpioSetPin ( pin, high )) ; }
-\c int pipinread(int pin) { 
-\c	eState state;
-\c	int rtn = 0;
-\c	gpioReadPin(pin, &state);
-\c	if ( state == high )  rtn = 1;
-\c	if ( state == low )  rtn = 0; 
-\c	return rtn ; }
-\c int pipinread2(int pin, eState *state) { return ( gpioReadPin(pin, state)); }
-c-function pipinread2 pipinread2 n a -- n
-c-function pipinread pipinread n -- n
+\c int pipinread(int pin, eState *state) { return ( gpioReadPin(pin, state)); }
+c-function pipinread pipinread n a -- n
 c-function pipinsetpullup pipinsetpullup n -- n
 c-function pipinsetpulldown pipinsetpulldown n -- n
 c-function pipinsetpulldisable pipinsetpulldisable n -- n
@@ -62,7 +54,6 @@ end-c-library
 \ basic input on GPIO pin 25 example
 \ piosetup .
 \ 25 pipininput .
-\ 25 pipinread .
-\ 25 pad pipinread2 . pad 1 dump
+\ 25 pad pipinread . pad 1 dump
 \ piocleanup .
 \ *******************************************************
