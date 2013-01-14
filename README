@@ -25,7 +25,7 @@ Here are the commands:
 Now you will need to update the rpi_GPIO_lib.fs file to use the new code that you changed or added.
 Once the rpi_GPIO_lib.fs file is complete save it and let gforth compile it to use ... this is done as follows:
 
-	$ clean			# this is a simple batch type file that simply removes the internal gforth library
+	$ ./clean		# this is a simple batch type file that simply removes the internal gforth library
 				# Note that it removes the library created with the name of mygpio so if you changed 
 				# that name in rpi_GPIO_lib.fs then you need to change that in the clean file
 	$ sudo gforth
