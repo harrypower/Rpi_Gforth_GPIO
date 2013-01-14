@@ -1,0 +1,1 @@
+sudo rm /root/.gforth/libcc-named/.libs/mygpio.so.0

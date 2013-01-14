@@ -4,7 +4,7 @@ The access is done in C via Wrapper functions that are writen in the Gforth libr
 The C code is included with a Makefile that creates a shared library. 
 The C code it self is mostly from Alanbarr/RaspberryPi-GPIO git repository.
 ##################################################
-To use first you need to compile the c code and librarys and install like follows:
+To use first you need to compile the c code and library and install like follows:
 	$ cd c_src
 	$ sudo make 
 	$ sudo make install
@@ -15,23 +15,19 @@ Now that you have the c shared library installed do the following
 Now at this moment Gforth has words to do GPIO stuff.  See the code itself for some information oh how to use it!
 ##################################################
 If you change any c code and need to test you will need to clear the gforth library stuff out and recompile the c library.
-I have not figured out the proper and best way to do this but here is a way that works.  
-After the code change then delete the library and recompile it and install it then run the gforth include command and it should work.
 Here are the commands:
 	$ cd c_src
 	$ sudo make uninstall
 	$ sudo make clean
-	$ cd ..
-	$ sudo gforth
-	include rpi_GPIO_lib.fs		# this will cause gforth to clean its librarys out.  Note you will get errors here but this is ok
-	bye				# to exit gforth eviroment
-	$ cd c_src 
 	$ sudo make 
 	$ sudo make install
 	$ cd ..
+Now you will need to update the rpi_GPIO_lib.fs file to use the new code that you changed or added.
+Once the rpi_GPIO_lib.fs file is complete save it and let gforth compile it to use ... this is done as follows:
+
+	$ clean			# this is a simple batch type file that simply removes the internal gforth library
+				# Note that it removes the library created with the name of mygpio so if you changed 
+				# that name in rpi_GPIO_lib.fs then you need to change that in the clean file
 	$ sudo gforth
-	include rpi_GPIO_lib.fs		# this should be error free and you should be back in business
-Sometimes for some reason this does not even work.  You will have noticed a path in the error message in Gforth. As an example the path may have looked like this /root/.gforth/libcc-named/.libs/mygpio.so.0 
-This path needs to be removed so do the following.
-	$ sudo rm -rf /root/.gforth	# note i do not include anything after the .gforth in this path example
-This simply removes the /root/.gforth directory and sub directroys and contents.  Now you need to follow the above first use compile instructions for the library and this should make it  work again!
+	include rpi_GPIO_lib.fs		
+Now the gforth has your new words and any updates or changes you made.  
