@@ -1,1 +1,12 @@
+sudo rm /root/.gforth/libcc-named/.libs/mygpio.a
+sudo rm /root/.gforth/libcc-named/.libs/mygpio.la
+sudo rm /root/.gforth/libcc-named/.libs/mygpio.lai
+sudo rm /root/.gforth/libcc-named/.libs/mygpio.o
+sudo rm /root/.gforth/libcc-named/.libs/mygpio.so
 sudo rm /root/.gforth/libcc-named/.libs/mygpio.so.0
+sudo rm /root/.gforth/libcc-named/.libs/mygpio.so.0.0.0
+sudo rm /root/.gforth/libcc-named/mygpio.c
+sudo rm /root/.gforth/libcc-named/mygpio.la
+sudo rm /root/.gforth/libcc-named/mygpio.lo
+sudo rm /root/.gforth/libcc-named/mygpio.o
+
