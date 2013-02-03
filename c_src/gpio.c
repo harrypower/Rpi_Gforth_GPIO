@@ -34,7 +34,25 @@
  *  Pin 1 should be labeled such on the PCB and should also be the closest pin to
  *  the SD card.
  *  <pre>
- *           _______
+ *  Raspberry Pi Rev 1
+ *          _______
+ *  3V3    |  1  2 | 5V         
+ *  GPIO00 |  3  4 | DNC        
+ *  GPIO01 |  5  6 | GND
+ *  GPIO04 |  7  8 | GPIO14
+ *  DNC    |  9 10 | GPIO15
+ *  GPIO17 | 11 12 | GPIO18
+ *  GPIO21 | 13 14 | DNC
+ *  GPIO22 | 15 16 | GPIO23
+ *  DNC    | 17 18 | GPIO24
+ *  GPIO10 | 19 20 | DNC
+ *  GPIO09 | 21 22 | GPIO25
+ *  GPIO11 | 23 24 | GPIO08
+ *  DNC    | 25 26 | GPIO07
+ *          _______
+ *
+ *  Raspberry Pi Rev 2
+ *          ______
  *  3V3    |  1  2 | 5V         
  *  GPIO00 |  3  4 | DNC        
  *  GPIO01 |  5  6 | GND
@@ -439,8 +457,9 @@ static errStatus gpioValidatePin(int gpioNumber)
     int index;
 
     /** List of all BCM2835 pins available through the Raspberry Pi header */
-    const static int32_t gValidPins[NUMBER_GPIO] = { 0, 1, 4, 7, 8, 9, 10, 11,
-                                                     14, 15, 17, 18, 21, 22, 23,
+    /** Note these are the values for Rev 2 Raspberry Pi board */	
+    const static int32_t gValidPins[NUMBER_GPIO] = { 2, 3, 4, 7, 8, 9, 10, 11,
+                                                     14, 15, 17, 18, 27, 22, 23,
                                                      24, 25};
 
     for (index = 0; index < NUMBER_GPIO; index++)

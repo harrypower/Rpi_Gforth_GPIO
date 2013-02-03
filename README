@@ -3,6 +3,8 @@ This is a Gforth library that gives low level access to Raspberry Pi GPIO Header
 The access is done in C via Wrapper functions that are writen in the Gforth library.
 The C code is included with a Makefile that creates a shared library. 
 The C code it self is mostly from Alanbarr/RaspberryPi-GPIO git repository.
+***** Note the gpio.c code is updated to have pin number error detection on Rev 2 
+***** Raspberry Pi boards.  This means it will not work on Rev 1 boards with out changing code back.
 ##################################################
 To use first you need to compile the c code and library and install like follows:
 	$ cd c_src
