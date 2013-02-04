@@ -54,12 +54,12 @@
  *  Raspberry Pi Rev 2
  *          ______
  *  3V3    |  1  2 | 5V         
- *  GPIO00 |  3  4 | DNC        
- *  GPIO01 |  5  6 | GND
+ *  GPIO02 |  3  4 | DNC        
+ *  GPIO03 |  5  6 | GND
  *  GPIO04 |  7  8 | GPIO14
  *  DNC    |  9 10 | GPIO15
  *  GPIO17 | 11 12 | GPIO18
- *  GPIO21 | 13 14 | DNC
+ *  GPIO27 | 13 14 | DNC
  *  GPIO22 | 15 16 | GPIO23
  *  DNC    | 17 18 | GPIO24
  *  GPIO10 | 19 20 | DNC
