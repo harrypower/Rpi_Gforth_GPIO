@@ -33,3 +33,9 @@ Once the rpi_GPIO_lib.fs file is complete save it and let gforth compile it to u
 	$ sudo gforth
 	include rpi_GPIO_lib.fs		
 Now the gforth has your new words and any updates or changes you made.  
+##################################################
+The file rpiGpio.h in c_src directory has a #define macro called DBG_INFO.
+This will need to be changed before compiling the code depending on if you want debug info on stderr output or not!
+See rpiGpio.h for what to change.  Default is set to not put output on stderr.
+Note the c functions all return an error code and that also is returned in the gforth wrapers so the error status is still reported just not to stderr file.
+

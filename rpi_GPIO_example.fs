@@ -50,6 +50,7 @@ piosetup 0= if
 	piocleanup 0= if s" GPIO is now turned off!" type cr endif
 else s" oops GPIO did not initalize!" type cr endif
 ;
+
  
 cr .( To use a simple output on pin 25 with an adacobler use command:  simpleoutput)
 cr .( To use a simple input on pin 25 with an adacobler use command: simpleinput)

@@ -475,4 +475,3 @@ static errStatus gpioValidatePin(int gpioNumber)
 }
 
 
-
