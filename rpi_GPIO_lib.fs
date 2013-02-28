@@ -42,6 +42,8 @@ c-function piocleanup gpioCleanup -- n
 c-function pipinlow pipinlow n -- n
 c-function pipinhigh pipinhigh n -- n
 \ **** GPIO I2C wrappers ****
+c-function pii2clock gpioI2cSetClock n -- n
+c-function pii2caddress gpioI2cSet7BitSlave n -- n
 c-function pii2csetup gpioI2cSetup -- n
 c-function pii2cleanup gpioI2cCleanup -- n
 end-c-library
