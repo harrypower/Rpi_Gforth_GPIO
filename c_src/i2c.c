@@ -78,10 +78,12 @@
 #include <time.h>
 
 /** @brief Pin used for I2C data */
-#define SDA                         0
+/** #define SDA				0 */	/** Rev1 */
+#define SDA                         2	/** Rev2 */
 
 /** @brief Pin used for I2C clock */
-#define SCL                         1
+/** #define SCL				1 */	/** Rev1 */
+#define SCL                         3 /** Rev2 */
 
 /** @brief The size the I2C mapping is required to be. */
 #define I2C_MAP_SIZE                BSC0_DEL_OFFSET

@@ -21,6 +21,7 @@
 clear-libs
 c-library mygpio
 s" rpigpio" add-lib
+\ **** GPIO wrappers  ****
 \c #include "rpiGpio.h"		
 \c int pipinsetpullup(int pin) { return ( gpioSetPullResistor( pin, pullup ));}
 \c int pipinsetpulldown(int pin) { return ( gpioSetPullResistor( pin, pulldown));}
@@ -40,6 +41,9 @@ c-function piosetup gpioSetup -- n
 c-function piocleanup gpioCleanup -- n
 c-function pipinlow pipinlow n -- n
 c-function pipinhigh pipinhigh n -- n
+\ **** GPIO I2C wrappers ****
+c-function pii2csetup gpioI2cSetup -- n
+c-function pii2cleanup gpioI2cCleanup -- n
 end-c-library
 
 \ basic output on gpio pin 25 example

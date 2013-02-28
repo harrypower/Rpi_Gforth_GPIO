@@ -113,8 +113,8 @@ int dbgPrint(FILE * stream, const char * file, int line, const char * format, ..
 to be sent to stderr.  The uncommented out #define for DBG_INFO is to be used
 if you do not want the debug info sent to stderr.  The code needs to be 
 recompiled and made into a library and then installed for this change to work.
-
-#define DBG_INFO stderr,__FILE__,__LINE__ */
-#define DBG_INFO NULL,__FILE__,__LINE__
+*/
+#define DBG_INFO stderr,__FILE__,__LINE__ 
+/** #define DBG_INFO NULL,__FILE__,__LINE__ */
 
 #endif /* _RPI_GPIO_H_ */
