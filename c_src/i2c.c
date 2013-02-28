@@ -27,15 +27,16 @@
  *  BCM2835 ARM Peripherals
  *  
  *  @section i2c_pinout I2C Pins 
- *  The Raspberry Pi has I2C functionality available at GPIO00, SDA and 
- *  GPI01, SCL.
+ *  The Raspberry Pi has I2C functionality available at GPIO00, SDA0 and 
+ *  GPI01, SCL0 for Rev 1 boards.  Rev 2 boards have I2C available at GPI002, SDA1 and 
+ *  GPIO3, SCL1.  **** this code supports Rev 2 boards *******
  *  <pre>
  *
  *  Raspberry Pi Rev 1
  *           _______
  *  3V3    |  1  2 | 5V         
- *  SDA    |  3  4 | DNC        
- *  SCL    |  5  6 | GND
+ *  SDA0   |  3  4 | DNC        
+ *  SCL0   |  5  6 | GND
  *  GPIO04 |  7  8 | GPIO14
  *  DNC    |  9 10 | GPIO15
  *  GPIO17 | 11 12 | GPIO18
@@ -51,8 +52,8 @@
  *  Raspberry Pi Rev 2
  *          ______
  *  3V3    |  1  2 | 5V         
- *  GPIO02 |  3  4 | DNC        
- *  GPIO03 |  5  6 | GND
+ *  SDA1   |  3  4 | DNC        
+ *  SCL1   |  5  6 | GND
  *  GPIO04 |  7  8 | GPIO14
  *  DNC    |  9 10 | GPIO15
  *  GPIO17 | 11 12 | GPIO18
@@ -63,7 +64,10 @@
  *  GPIO09 | 21 22 | GPIO25
  *  GPIO11 | 23 24 | GPIO08
  *  DNC    | 25 26 | GPIO07
- *          _______*  </pre>
+ *          _______* 
+ *
+ *  </pre>
+ *
  */
 
 #include "rpiGpio.h"
@@ -76,6 +80,9 @@
 #include <errno.h>
 #include <stdio.h>
 #include <time.h>
+
+/** @brief Defining Offset for  I2C 1 for Rev 2 board */
+#define I2C_PORT_USED		BSC1_C 
 
 /** @brief Pin used for I2C data */
 /** #define SDA				0 */	/** Rev1 */
@@ -150,7 +157,7 @@ errStatus gpioI2cSetup(void)
                                                   PROT_READ|PROT_WRITE,
                                                   MAP_SHARED,
                                                   mem_fd,
-                                                  BSC0_BASE)) == MAP_FAILED)
+                                                  I2C_PORT_USED )) == MAP_FAILED)
     {
         dbgPrint(DBG_INFO, "mmap() failed. errno: %s.", strerror(errno));
         rtn = ERROR_EXTERNAL;
