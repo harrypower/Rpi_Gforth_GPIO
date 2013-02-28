@@ -30,6 +30,8 @@
  *  The Raspberry Pi has I2C functionality available at GPIO00, SDA and 
  *  GPI01, SCL.
  *  <pre>
+ *
+ *  Raspberry Pi Rev 1
  *           _______
  *  3V3    |  1  2 | 5V         
  *  SDA    |  3  4 | DNC        
@@ -45,8 +47,24 @@
  *  GPIO11 | 23 24 | GPIO08
  *  DNC    | 25 26 | GPIO07
  *          _______
- *  </pre>
-*/
+ * 
+ *  Raspberry Pi Rev 2
+ *          ______
+ *  3V3    |  1  2 | 5V         
+ *  GPIO02 |  3  4 | DNC        
+ *  GPIO03 |  5  6 | GND
+ *  GPIO04 |  7  8 | GPIO14
+ *  DNC    |  9 10 | GPIO15
+ *  GPIO17 | 11 12 | GPIO18
+ *  GPIO27 | 13 14 | DNC
+ *  GPIO22 | 15 16 | GPIO23
+ *  DNC    | 17 18 | GPIO24
+ *  GPIO10 | 19 20 | DNC
+ *  GPIO09 | 21 22 | GPIO25
+ *  GPIO11 | 23 24 | GPIO08
+ *  DNC    | 25 26 | GPIO07
+ *          _______*  </pre>
+ */
 
 #include "rpiGpio.h"
 #include <stdarg.h>
