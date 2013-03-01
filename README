@@ -5,6 +5,8 @@ The C code is included with a Makefile that creates a shared library.
 The C code it self is mostly from Alanbarr/RaspberryPi-GPIO git repository.
 ***** Note the gpio.c code is updated to have pin number error detection on Rev 2 
 ***** Raspberry Pi boards.  This means it will not work on Rev 1 boards with out changing code back.
+This library now has I2C working on P1-03(as I2C1_SDA) P1-05(as I2C1_SCL) and again this is Rev 2 board only!
+The C shared library is now version 0.0.2 ( more testing is needed! )
 ##################################################
 To use first you need to compile the c code and library and install like follows:
 	$ cd c_src
