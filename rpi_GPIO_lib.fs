@@ -66,3 +66,12 @@ end-c-library
 \ piocleanup .
 \ *******************************************************
 
+\ basic read from a I2C device that is id # 104 decimal 
+\ piosetup .
+\ pii2csetup .
+\ 104 pii2caddress .
+\ 100000 pii2clock .
+\ here dup 10 pii2cread . \ read 10 bytes from device
+\ 10 dump 	\ this should give you the 10 items that were read from the device
+\ pii2cleanup .
+\ piocleanup .
