@@ -1,0 +1,20 @@
+Raspberry Pi Rev 2 pinout 
+
+Pin	Alt0		__________	Pin	Alt0		Notes
+3v3			| P1  P2 |	5v0
+GPIO02	I2C1_SDA	| P3  P4 |	5v0
+GPIO03	I2C1_SCL	| P5  P6 |	GND
+GPIO04			| P7  P8 |	GPIO14	UART0_TXD	P8 set to Alt0 at boot time in Wheezy
+DNC			| P9  P10|	GPIO15	UART0_RXD	P10 set to Alt0 at boot time in Wheezy
+GPIO17			| P11 P12|	GPIO18
+GPIO27			| P13 P14|	DNC
+GPIO22			| P15 P16|	GPIO23
+DNC			| P17 P18|	GPIO24
+GPIO10	SPI0_MOSI	| P19 P20|	DNC
+GPIO09	SPI0_MISO	| P21 P22|	GPIO25
+GPIO11	SPI0_SCLK	| P23 P24|	GPIO08	SPI0_CE0_N
+DNC			| P25 P26|	GPIO07	SPI0_CE1_N
+			__________
+
+See elinux.org/Rpi_Low-level_peripherals for more details!
+

@@ -1,12 +1,14 @@
 ##################################################
 This is a Gforth library that gives low level access to Raspberry Pi GPIO Header!
-The access is done in C via Wrapper functions that are writen in the Gforth library.
+The access is done in C via Wrapper functions that are written in the Gforth library.
 The C code is included with a Makefile that creates a shared library. 
 The C code it self is mostly from Alanbarr/RaspberryPi-GPIO git repository.
 ***** Note the gpio.c code is updated to have pin number error detection on Rev 2 
 ***** Raspberry Pi boards.  This means it will not work on Rev 1 boards with out changing code back.
 This library now has I2C working on P1-03(as I2C1_SDA) P1-05(as I2C1_SCL) and again this is Rev 2 board only!
 The C shared library is now version 0.0.2 ( more testing is needed! )
+I added a DS1307 Real time clock library in Gforth what works via I2C.
+I added a Pi_pinouts file for the Rev 2 Raspberry Pi P1 header.
 ##################################################
 To use first you need to compile the c code and library and install like follows:
 	$ cd c_src
