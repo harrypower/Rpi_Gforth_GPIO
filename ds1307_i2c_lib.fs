@@ -1,3 +1,19 @@
+\ This Gforth code is a Raspberry Pi GPIO library
+\    Copyright (C) 2013  Philip K. Smith
+
+\    This program is free software: you can redistribute it and/or modify
+\    it under the terms of the GNU General Public License as published by
+\    the Free Software Foundation, either version 3 of the License, or
+\    (at your option) any later version.
+
+\    This program is distributed in the hope that it will be useful,
+\    but WITHOUT ANY WARRANTY; without even the implied warranty of
+\    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+\    GNU General Public License for more details.
+
+\    You should have received a copy of the GNU General Public License
+\    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 \ This is a basic library to access a DS1307 Real Time Clock chip via I2C
 \ The connection to the raspberry pi to use this code are as follows:
 \ 	SDA is P1-03 
