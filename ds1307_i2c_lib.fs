@@ -14,7 +14,7 @@
 \    You should have received a copy of the GNU General Public License
 \    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-\ This is a basic library to access a DS1307 Real Time Clock chip via I2C
+\ This is a basic library to access a DS1307 Real Time Clock chip via I2C1 on Raspberry Pi Rev2.
 \ The connections to the raspberry pi to use this code are as follows:
 \ 	SDA is P1-03 
 \	SCL is P1-05
@@ -49,3 +49,17 @@ include rpi_GPIO_lib.fs
 	ENDTRY-IFERROR
 	THEN
 	;
+
+: ds1307_clock_on ( -- flag )	\ Will turn the clock on
+	TRY	0 @ds1307_reg throw dup 127 > if 128 - 0 !ds1307 else drop 0 then 	
+	ENDTRY-IFERROR 
+	THEN
+	;
+
+: ds1307_clock_off ( -- flag )	\ Turn the clock off
+	TRY     0 @ds1307_reg throw dup 127 <= if 128 swap + 0 !ds1307 else drop 0 then 
+	ENDTRY-IFERROR
+	THEN
+	;
+	
+	
