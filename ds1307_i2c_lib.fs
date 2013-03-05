@@ -15,7 +15,7 @@
 \    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 \ This is a basic library to access a DS1307 Real Time Clock chip via I2C
-\ The connection to the raspberry pi to use this code are as follows:
+\ The connections to the raspberry pi to use this code are as follows:
 \ 	SDA is P1-03 
 \	SCL is P1-05
 \ Note this code uses I2C1 and will only work with the above pins on Raspberry Pi Rev. 2 board.  
@@ -23,9 +23,11 @@
 
 include rpi_GPIO_lib.fs
 
+: valid_addr ( reg_addr -- reg_addr flag )	\ 0 to 63 are only valid addresses.  Flag returns zero for correct addresses.
+	dup 0< if 11 else dup 63 > if 11 else 0 then then ;	
+
 : !ds1307 ( val reg_addr -- flag )	\ Write val to ds1307 reg_addr.  Flag is zero for success. 
-	TRY 	dup 0< if 11 throw then	\ can't have a reg_addr less then 0
-		dup 63 > if 11 throw then \ can't have a reg_addr greater then 63 
+	TRY 	valid_addr throw
 		piosetup throw pii2csetup throw 104 pii2caddress throw 100000 pii2clock throw
 		pad c! pad 1 + c! pad 2 pii2cwrite throw pii2cleanup throw piocleanup throw 0
  	ENDTRY-IFERROR	swap drop swap drop	\ ds1307 writing failed error # is on stack at exit of this code
@@ -39,3 +41,11 @@ include rpi_GPIO_lib.fs
 	THEN			\ read ok no errors 
 	;
 
+: @ds1307_reg	( reg_addr -- val flag )	\ Read reg_addr on ds1307.  Flag is zero for success.
+	TRY	valid_addr throw
+		0 63 !ds1307 throw		\ This clobers reg 63 or the last ram location in ds1307
+		0 ?DO @ds1307 throw drop LOOP 	\ Now reg_addr is the next address to be read.
+		@ds1307 			
+	ENDTRY-IFERROR
+	THEN
+	;
