@@ -74,3 +74,5 @@ include rpi_GPIO_lib.fs
 	dup 64 and if dup 32 and if 12 else 0 then swap 31 and bcdtodec + else 63 and bcdtodec then 0
     ENDTRY-IFERROR 0 swap 0 swap 0 swap    \ some read error
     THEN ;
+
+\ test
