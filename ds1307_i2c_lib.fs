@@ -50,16 +50,27 @@ include rpi_GPIO_lib.fs
 	THEN
 	;
 
-: ds1307_clock_on ( -- flag )	\ Will turn the clock on
-	TRY	0 @ds1307_reg throw dup 127 > if 128 - 0 !ds1307 else drop 0 then 	
-	ENDTRY-IFERROR 
-	THEN
-	;
+: ds1307_clock_off ( -- flag ) \ Turn on clock
+    TRY
+	0 @ds1307_reg throw 128 or 0 !ds1307 
+    ENDTRY-IFERROR
+    THEN ;
 
-: ds1307_clock_off ( -- flag )	\ Turn the clock off
-	TRY     0 @ds1307_reg throw dup 127 <= if 128 swap + 0 !ds1307 else drop 0 then 
-	ENDTRY-IFERROR
-	THEN
-	;
-	
-	
+: ds1307_clock_on ( -- flag )  \ Clock off
+    TRY
+	0 @ds1307_reg throw 127 and 0 !ds1307
+    ENDTRY-IFERROR
+    THEN ;
+
+: dectobcd ( n -- n )
+    dup 10 / dup 16 * swap 10 * rot swap - + ;
+
+: bcdtodec ( n -- n )
+    dup 16 / dup 10 * swap 16 * rot swap - + ;
+
+: @ds1307_time ( -- sec min hour flag )  \ Read seconds, minutes, hours (24 hour format).  Flag zero for correct reading
+    TRY
+	0 @ds1307_reg throw 127 and bcdtodec @ds1307 throw 127 and bcdtodec @ds1307 throw  \ reading done
+	dup 64 and if dup 32 and if 12 else 0 then swap 31 and bcdtodec + else 63 and bcdtodec then 0
+    ENDTRY-IFERROR 0 swap 0 swap 0 swap    \ some read error
+    THEN ;
