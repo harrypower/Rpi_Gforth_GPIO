@@ -39,7 +39,7 @@ include rpi_GPIO_lib.fs
 	piosetup throw pii2csetup throw 104 pii2caddress throw 100000 pii2clock throw
 	pad 1 pii2cread throw pii2cleanup throw piocleanup throw pad c@ 0 
     RESTORE	dup if 11 swap  then	\ read error # is on stack at exit of this code
-    ENDTRY ;				\ read ok no errors 
+    ENDTRY ;				 
 	
 
 : @ds1307_reg	( reg_addr -- val flag )	\ Read reg_addr on ds1307.  Flag is zero for success.
@@ -48,8 +48,7 @@ include rpi_GPIO_lib.fs
 		0 ?DO @ds1307 throw drop LOOP 	\ Now reg_addr is the next address to be read.
 		@ds1307 			
 	RESTORE 
-	ENDTRY
-	;
+	ENDTRY ;
 	
 : ds1307_clock_off ( -- flag ) \ Turn on clock
     TRY
