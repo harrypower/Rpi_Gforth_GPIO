@@ -27,7 +27,16 @@
 \ Humidity value needs to be divided by 10 to get the % relavite humidity value with correct decimal place.
 \ This code will shutdown if another version of dt1_11_22.fs is running.
 \ This is needed because the sensor or pi could possibly be damaged if the same pin is accessed by by two running codes.
-
+\
+\ The DTH11 or DTH22 sensor are 4 pin devices.
+\ Pin 1 should be hooked up to GPIO pin #1 for 3.3 volts.
+\ Pin 4 should be hooked up to GPIO pin #6 for digital ground or any other digital ground on the GPIO header (14,20,25,9)
+\ Pin 3 is not used
+\ Pin 2 is conneced to the GPIO pin you want to talk to the device with and is the same pin that you pass as argument to this code.
+\ Note this communication pin is not to be shared with any other device.
+\ Pin 2 also needs a pull up resister of 5k to 3.3 volts only as any other voltage will damage the Pi ( GPIO pin #1 should be used)
+\ The pin #'s to case orientation should be found online to confirm you got it correct as hookin this up wrong may damage your pi!
+\
 \ error 1000 -- to many transitions have happened to be a proper message from dth device
 \ error 1001 -- failed to find bit # 40 in data sample so data is bad
 \ error 1002 -- checksum did not add up so data is bad
